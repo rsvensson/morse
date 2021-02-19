@@ -5,7 +5,7 @@
 #include <QMainWindow>
 #include <QLineEdit>
 
-class MainWindow : public QMainWindow
+class MainWindow : public QMainWindow, Translator
 {
     Q_OBJECT
 
@@ -17,7 +17,6 @@ private slots:
     void morseToText();
 
 private:
-    Translator *m_translator;
     QLineEdit *m_morseEdit;
     QLineEdit *m_textEdit;
 

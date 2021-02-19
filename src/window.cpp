@@ -5,7 +5,6 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    m_translator(new Translator),
     m_morseEdit(new QLineEdit),
     m_textEdit(new QLineEdit)
 {
@@ -40,7 +39,7 @@ void MainWindow::textToMorse()
 	QString morse;
 
 	try {
-	    morse = QString::fromStdString(m_translator->lettersToMorse(text.toStdString()));
+	    morse = QString::fromStdString(lettersToMorse(text.toStdString()));
 	} catch (int e) {
 	    m_morseEdit->setText("Invalid text input (Only A-Z and 0-9 allowed)");
 	    return;
@@ -58,7 +57,7 @@ void MainWindow::morseToText()
 	QString text;
 
 	try {
-	    text = QString::fromStdString(m_translator->morseToLetters(morse.toStdString()));
+	    text = QString::fromStdString(morseToLetters(morse.toStdString()));
 	} catch (int e) {
 	    m_textEdit->setText("Invalid morse code input (Only '.', '-', and ' ' allowed)");
 	    return;
