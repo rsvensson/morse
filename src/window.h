@@ -11,6 +11,7 @@ class MainWindow : public QMainWindow, Translator
 
 public:
     MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
 
 private slots:
     void textToMorse();

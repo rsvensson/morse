@@ -18,6 +18,13 @@ MainWindow::MainWindow(QWidget *parent) :
     this->show();
 }
 
+MainWindow::~MainWindow()
+{
+    m_morseEdit->del();
+    m_textEdit->del();
+    this->deleteLater();
+}
+
 void MainWindow::setWindowLayout()
 {
     QWidget *mainWidget = new QWidget;
