@@ -29,7 +29,7 @@ void MainWindow::setWindowLayout()
     mainLayout->addWidget(m_morseEdit);
     mainWidget->setLayout(mainLayout);
     this->setCentralWidget(mainWidget);
-    this->setMinimumWidth(320);
+    this->setMinimumWidth(420);
 }
 
 void MainWindow::textToMorse()
@@ -41,7 +41,7 @@ void MainWindow::textToMorse()
 	try {
 	    morse = QString::fromStdString(lettersToMorse(text.toStdString()));
 	} catch (int e) {
-	    m_morseEdit->setText("Invalid text input (Only A-Z and 0-9 allowed)");
+	    m_morseEdit->setText("Invalid text input (A-Z, 0-9, and punctuation allowed)");
 	    return;
 	}
 
