@@ -3,7 +3,7 @@
 #include <list>
 
 Translator::Translator()
-    : m_alphabet(new std::map<char, std::string>)
+    : m_alphabet(new std::map<const char, const std::string>)
 {
     m_alphabet->insert(std::pair<char, std::string>('A', ".-"));
     m_alphabet->insert(std::pair<char, std::string>('B', "-..."));
@@ -44,7 +44,7 @@ Translator::Translator()
     m_alphabet->insert(std::pair<char, std::string>(' ', " "));
 }
 
-std::string Translator::toUpper(std::string input)
+std::string Translator::toUpper(const std::string input)
 {
     std::string uppercase = input;
     std::transform(uppercase.begin(), uppercase.end(), uppercase.begin(), ::toupper);
@@ -52,29 +52,29 @@ std::string Translator::toUpper(std::string input)
     return uppercase;
 }
 
-void Translator::validateLetters(std::string letters)
+void Translator::validateLetters(const std::string letters)
 {
-    for (char &letter : letters) {
+    for (const char &letter : letters) {
 	if (m_alphabet->find(letter) == m_alphabet->cend())
 	    throw -1;
     }
 }
 
-void Translator::validateMorse(std::string morse)
+void Translator::validateMorse(const std::string morse)
 {
-    for (char &el : morse) {
+    for (const char &el : morse) {
 	if (el != '.' && el != '-' && el != ' ')
 	    throw -1;
     }
 }
 
-std::string Translator::lettersToMorse(std::string letters)
+std::string Translator::lettersToMorse(const std::string letters)
 {
     validateLetters(toUpper(letters));
 
     std::string morse;
     for (char &letter : toUpper(letters)) {
-	std::map<char, std::string>::iterator pair;
+	std::map<const char, const std::string>::iterator pair;
 	pair = m_alphabet->find(letter);
 	morse.append(pair->second);
 	morse.append(" ");
@@ -83,7 +83,7 @@ std::string Translator::lettersToMorse(std::string letters)
     return morse;
 }
 
-std::string Translator::morseToLetters(std::string morse)
+std::string Translator::morseToLetters(const std::string morse)
 {
     validateMorse(morse);
 

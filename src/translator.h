@@ -6,17 +6,17 @@
 
 class Translator
 {
-    std::map<char, std::string> *m_alphabet;
+    std::map<const char, const std::string> *m_alphabet;
 
-    std::string toUpper(std::string input);
-    void validateLetters(std::string letters);
-    void validateMorse(std::string morse);
+    std::string toUpper(const std::string input);
+    void validateLetters(const std::string letters);
+    void validateMorse(const std::string morse);
 
 public:
     Translator();
 
-    std::string lettersToMorse(std::string letters);
-    std::string morseToLetters(std::string morse);
+    std::string lettersToMorse(const std::string letters);
+    std::string morseToLetters(const std::string morse);
 };
 
 #endif
